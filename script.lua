@@ -1,8 +1,8 @@
-local groupId = 32419298 -- Replace this with your group ID
-local playerName = "Azkampiof" -- Replace this with the player's username
+local groupId = tonumber(arg[1]) or error("Group ID not provided")
+local playerName = arg[2] or error("Player name not provided")
 
 -- Function to get the player's rank in the group
-local function getPlayerRankInGroup(playerName)
+local function getPlayerRankInGroup(groupId, playerName)
     local success, rank = pcall(function()
         return game:GetService("GroupService"):GetRankInGroup(groupId, playerName)
     end)
@@ -15,5 +15,5 @@ local function getPlayerRankInGroup(playerName)
 end
 
 -- Call the function to get the rank
-local rank = getPlayerRankInGroup(playerName)
+local rank = getPlayerRankInGroup(groupId, playerName)
 print(playerName .. "'s rank in the group is: " .. rank)
